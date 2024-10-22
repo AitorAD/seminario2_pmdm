@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 
 class ScollDesignPage extends StatelessWidget {
+  final boxDecoration = BoxDecoration(
+      gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [
+        0.5,
+        0.5
+      ],
+          colors: [
+        Color(0xff7EEBCB),
+        Color(0xff30BAD6),
+      ]));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: PageView(
-            scrollDirection: Axis.vertical,
-            physics: BouncingScrollPhysics(),
-            children: [Page1(), Bienvenido()]));
+        backgroundColor: Color(0xff30BAD6),
+        body: Container(
+          decoration: boxDecoration,
+          child: PageView(
+              scrollDirection: Axis.vertical,
+              physics: BouncingScrollPhysics(),
+              children: [Page1(), Bienvenido()]),
+        ));
   }
 }
 
@@ -24,7 +41,13 @@ class Bienvenido extends StatelessWidget {
         child: TextButton(
             style: TextButton.styleFrom(backgroundColor: Colors.blue),
             onPressed: null,
-            child: Text('Bienvenido')),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40),
+              child: Text(
+                'Bienvenido',
+                style: TextStyle(color: Colors.white),
+              ),
+            )),
       ),
     );
   }
@@ -38,7 +61,7 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [Background(), MainContent()],
+      children: [BackgroundScroll(), MainContent()],
     );
   }
 }
@@ -68,8 +91,8 @@ class MainContent extends StatelessWidget {
   }
 }
 
-class Background extends StatelessWidget {
-  const Background({
+class BackgroundScroll extends StatelessWidget {
+  const BackgroundScroll({
     super.key,
   });
 
